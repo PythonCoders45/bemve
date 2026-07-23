@@ -32,3 +32,23 @@ class Shift(Animation):
         if self.start_pos is None:
             self.start_pos = np.copy(self.mobject.center)
         self.mobject.center = self.start_pos + (self.direction * alpha)
+
+class Create:
+
+    def __init__(self, vmobject: VMobject):
+        self.vmobject = vmobject
+
+    def update(self, ctx: cairo.Context, alpha: float):
+        # Draw progressively up to subpath_ratio = alpha
+        self.vmobject.draw(ctx, subpath_ratio=alpha)
+
+
+class Transform:
+
+    def __init__(self, source_vmobject: VMobject, target_vmobject: VMobject):
+        self.source = source_vmobject
+        self.target = target_vmobject
+
+    def update(self, ctx: cairo.Context, alpha: float):
+        interpolated = self.source.interpolate(self.target, alpha)
+        interpolated.draw(ctx, subpath_ratio=1.0)
