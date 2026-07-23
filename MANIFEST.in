@@ -1,0 +1,16 @@
+# Include documentation and license
+include README.md
+include LICENSE
+recursive-include docs *.md
+
+# Include asset directories
+recursive-include bemve/fonts *.ttf *.otf
+recursive-include bemve/images *.png *.jpg *.jpeg *.svg
+recursive-include bemve/video *.mp4 *.mov
+
+# Exclude temporary build files, partial clip caches, and compiled bytecode
+global-exclude *.py[cod]
+global-exclude __pycache__
+global-exclude .DS_Store
+recursive-exclude bemve/video/partial_movie_files *
+recursive-exclude bemve/video/cache *
