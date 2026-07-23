@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bemve"
+version = "0.1.0"
+description = "A lightweight, modular 2D/3D mathematical and technical animation engine in Python."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Your Name", email = "your.email@example.com" }
+]
+keywords = [
+    "animation",
+    "manim",
+    "vector-graphics",
+    "math",
+    "cairo",
+    "data-visualization",
+    "video-generation"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+
+dependencies = [
+    "numpy>=1.21.0",
+    "pycairo>=1.20.0",
+    "imageio>=2.15.0",
+    "imageio-ffmpeg>=0.4.5",
+    "matplotlib>=3.5.0",
+    "seaborn>=0.11.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=22.0.0",
+    "build",
+    "twine",
+]
+
+[project.urls]
+Homepage = "https://github.com/PythonCoders45/bemve"
+Documentation = "https://github.com/PythonCoders45/bemve/tree/main/docs"
+Repository = "https://github.com/PythonCoders45/bemve.git"
+
+[project.scripts]
+bemve = "bemve.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools.package-data]
+bemve = [
+    "fonts/*.ttf",
+    "fonts/*.otf",
+    "images/*.png",
+    "images/*.jpg",
+    "images/*.svg",
+]
