@@ -15,6 +15,8 @@ from bemve.latex import Tex, MathTex
 from bemve.font import FontManager, Text
 from bemve.text import Text
 from bemve.image_mobject import ImageMobject
+from bemve.camera import Camera
+from bemve.video_mobject import VideoMobject
 
 # --- 2. Exporter Subsystem ---
 from bemve.exporter import VideoExporter
@@ -87,5 +89,7 @@ __all__ = [
     "CacheManager",
     "Scene",
     "Text",
-    "ImageMobject"
+    "ImageMobject",
+    "Camera",
+    "VideoMobject"
 ]
