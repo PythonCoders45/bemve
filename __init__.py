@@ -10,6 +10,8 @@ from bemve.exporter import VideoExporter
 # --- 3. Graphics & Rendering Subsystems ---
 from bemve.cairo_renderer import CairoRenderer
 
+from bemve.animation import Create, Transform
+
 try:
     from bemve.opengl_renderer import ModernGLRenderer
 except ImportError:
