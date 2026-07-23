@@ -85,5 +85,7 @@ __all__ = [
     "ValueTracker",
     "TrackerAnimation",
     "CacheManager",
-    "Scene"
+    "Scene",
+    "Text",
+    "ImageMobject"
 ]
