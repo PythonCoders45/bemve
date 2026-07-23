@@ -4,6 +4,14 @@ from pathlib import Path
 __version__ = "0.1.0"
 __author__ = "Bemve Community"
 
+from bemve.exporter import VideoExporter
+from bemve.cairo_renderer import CairoRenderer
+from bemve.vmobject import VMobject, VCircle, VSquare
+from bemve.animation import Create, Transform
+from bemve.value_tracker import ValueTracker, TrackerAnimation
+from bemve.caching import CacheManager
+from bemve.scene import Scene
+
 # --- 2. Exporter Subsystem ---
 from bemve.exporter import VideoExporter
 
