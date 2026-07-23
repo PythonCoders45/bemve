@@ -1,5 +1,5 @@
 import numpy as np
-
+import cairo
 
 class Camera3D:
 
@@ -31,3 +31,32 @@ class Camera3D:
         scale = self.focal_length / max(distance, 0.1)
 
         return (x1 * scale, y2 * scale)
+
+class Camera:
+    """Manages the viewport offset and zoom level."""
+
+    def __init__(self, width: int = 1920, height: int = 1080):
+        self.width = width
+        self.height = height
+        self.center = np.array([0.0, 0.0])  # Look-at point (X, Y)
+        self.zoom = 1.0                     # 1.0 = Default, 2.0 = 2x Zoomed in
+
+    def look_at(self, x: float, y: float):
+        """Sets the camera focus point."""
+        self.center = np.array([x, y], dtype=float)
+
+    def set_zoom(self, zoom_factor: float):
+        """Sets the zoom magnification level."""
+        self.zoom = max(0.01, float(zoom_factor))
+
+    def apply_transform(self, ctx: cairo.Context):
+        """Applies the camera zoom and pan transform to the Cairo context."""
+        ctx.save()
+        # Move origin to screen center
+        ctx.translate(self.width / 2.0, self.height / 2.0)
+        
+        # Apply zoom scaling
+        ctx.scale(self.zoom, self.zoom)
+
+        # Pan to camera center point
+        ctx.translate(-self.center[0], -self.center[1])
