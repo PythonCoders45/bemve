@@ -11,6 +11,8 @@ from bemve.animation import Create, Transform
 from bemve.value_tracker import ValueTracker, TrackerAnimation
 from bemve.caching import CacheManager
 from bemve.scene import Scene
+from bemve.latex import Tex, MathTex
+from bemve.font import FontManager, Text
 
 # --- 2. Exporter Subsystem ---
 from bemve.exporter import VideoExporter
