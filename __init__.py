@@ -70,5 +70,16 @@ __all__ = [
     "there_and_back",
     "bounce",
     "Create",
-    "Transform"
+    "Transform",
+    "VideoExporter",
+    "CairoRenderer",
+    "VMobject",
+    "VCircle",
+    "VSquare",
+    "Create",
+    "Transform",
+    "ValueTracker",
+    "TrackerAnimation",
+    "CacheManager",
+    "Scene"
 ]
