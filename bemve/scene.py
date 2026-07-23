@@ -3,7 +3,7 @@ from pathlib import Path
 from bemve.cairo_renderer import CairoRenderer
 from bemve.exporter import VideoExporter
 from bemve.caching import CacheManager
-
+from bemve.camera import Camera
 
 class Scene:
 
@@ -21,6 +21,8 @@ class Scene:
 
         self.width = 1920 if quality == "high" else 1280
         self.height = 1080 if quality == "high" else 720
+
+        self.camera = Camera(width=self.width, height=self.height)
 
         self.renderer = CairoRenderer(width=self.width, height=self.height)
         self.exporter = VideoExporter(
@@ -58,6 +60,25 @@ class Scene:
         # Determine partial clip destination
         clip_filename = f"clip_{cache_hash}{self.exporter.output_path.suffix}"
         clip_path = self.exporter.partial_dir / clip_filename
+
+        for frame_idx in range(total_frames):
+            alpha = frame_idx / max(total_frames - 1, 1)
+
+            self.renderer.clear()
+
+            # Apply camera transform matrix before rendering
+            self.camera.apply_transform(self.renderer.ctx)
+
+            # Draw animations / video objects
+            for anim in animations:
+                anim.update(self.renderer.ctx, alpha)
+
+            # Restore camera context matrix after frame
+            self.renderer.ctx.restore()
+
+            # Export frame
+            rgb_frame = self.renderer.get_frame_np()
+            self.exporter.write_frame(rgb_frame)
 
         # 2. Check if cached version exists
         if self.use_cache and CacheManager.is_cached(clip_path):
