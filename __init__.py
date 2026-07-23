@@ -17,6 +17,8 @@ from bemve.text import Text
 from bemve.image_mobject import ImageMobject
 from bemve.camera import Camera
 from bemve.video_mobject import VideoMobject
+from bemve.transition import FadeIn, FadeOut, GrowFromCenter, SlideIn
+from bemve.charts import AnimatedBarChart, Plot3D
 
 # --- 2. Exporter Subsystem ---
 from bemve.exporter import VideoExporter
@@ -91,5 +93,11 @@ __all__ = [
     "Text",
     "ImageMobject",
     "Camera",
-    "VideoMobject"
+    "VideoMobject",
+    "FadeIn",
+    "FadeOut",
+    "SlideIn",
+    "GrowFromCenter",
+    "AnimatedBarChart",
+    "Plot3D"
 ]
